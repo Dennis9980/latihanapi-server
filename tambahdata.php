@@ -1,16 +1,16 @@
 <?php
 
-// membutuhkan pemanggilan akses koneksi (mysql)
-// (DISI)
+    // membutuhkan pemanggilan akses koneksi (mysql)
+    require 'koneksi.php';
 
-// menjalankan session
-// (DISI)
- 
-// check apakah session email sudah ada atau belum.
-// jika belum maka akan diredirect ke halaman index (login)
-if( empty($_SESSION['uname']) ){
-    header('Location: login.html');
-}
+    // menjalankan session
+    session_start();
+    
+    // check apakah session email sudah ada atau belum.
+    // jika belum maka akan diredirect ke halaman index (login)
+    if( empty($_SESSION['uname']) ){
+        header('Location: login.html');
+    }
 ?>
 
 <?php

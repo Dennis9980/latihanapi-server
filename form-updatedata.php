@@ -1,23 +1,25 @@
 <?php
 
-// membutuhkan pemanggilan akses koneksi (mysql)
-// (DISI)
+  // membutuhkan pemanggilan akses koneksi (mysql)
+  include("koneksi.php");
 
-// jika id tidak ada / null akan kembali ke index.php
-if(!isset($_GET['id'])){
+  // jika id tidak ada / null akan kembali ke index.php
+  if(!isset($_GET['id'])){
     header('Location: index.php');
-}
+  }
 
-//ambil id dari query
-$id = mysqli_real_escape_string($db,$_GET['id']);
+  //ambil id dari query
+  $id = mysqli_real_escape_string($db,$_GET['id']);
 
-//buat query
-// (DISI)
-// (DISI)
-$editdata = mysqli_fetch_assoc($query);
+  //buat query
+  $sql = "SELECT * FROM dataku WHERE id=$id";
+  $query = mysqli_query($db, $sql);
+  $editdata = mysqli_fetch_assoc($query);
 
-// cek jika edit tidak ditemukan
-// (DISI)
+  // cek jika edit tidak ditemukan
+  if(mysqli_num_rows($query) < 1){
+    die("Data tidak ditemukan");
+  }
 
 ?>
 
